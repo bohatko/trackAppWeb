@@ -12,8 +12,10 @@ import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'alert_add_dop_model.dart';
 export 'alert_add_dop_model.dart';
@@ -254,9 +256,19 @@ class _AlertAddDopWidgetState extends State<AlertAddDopWidget> {
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  listViewSpravochnikDopRecord
-                                                      .image,
+                                                child: OctoImage(
+                                                  placeholderBuilder: (_) =>
+                                                      SizedBox.expand(
+                                                    child: Image(
+                                                      image: BlurHashImage(
+                                                          '[6PZfSi_.AyE_3t7t7R**0o#DgR4_3R*D%xtMcV@%itSIot7-:IoNHoft7M{%1WBg4tR?vWB9Et7'),
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                  image: NetworkImage(
+                                                    listViewSpravochnikDopRecord
+                                                        .image,
+                                                  ),
                                                   width: 150.0,
                                                   height: 150.0,
                                                   fit: BoxFit.cover,

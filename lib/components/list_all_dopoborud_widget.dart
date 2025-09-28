@@ -8,8 +8,10 @@ import '/mobile_a_p_p/components/list_empty_web/list_empty_web_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'list_all_dopoborud_model.dart';
 export 'list_all_dopoborud_model.dart';
@@ -221,8 +223,19 @@ class _ListAllDopoborudWidgetState extends State<ListAllDopoborudWidget> {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            listViewSpravochnikDopRecord.image,
+                                          child: OctoImage(
+                                            placeholderBuilder: (_) =>
+                                                SizedBox.expand(
+                                              child: Image(
+                                                image: BlurHashImage(
+                                                    '[6PZfSi_.AyE_3t7t7R**0o#DgR4_3R*D%xtMcV@%itSIot7-:IoNHoft7M{%1WBg4tR?vWB9Et7'),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            image: NetworkImage(
+                                              listViewSpravochnikDopRecord
+                                                  .image,
+                                            ),
                                             width: 120.0,
                                             height: 120.0,
                                             fit: BoxFit.cover,

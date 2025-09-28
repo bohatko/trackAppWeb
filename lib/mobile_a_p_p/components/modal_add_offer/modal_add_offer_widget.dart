@@ -17,8 +17,10 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
 import 'modal_add_offer_model.dart';
 export 'modal_add_offer_model.dart';
@@ -434,9 +436,19 @@ class _ModalAddOfferWidgetState extends State<ModalAddOfferWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
-                                                  child: Image.network(
-                                                    cardSpravochnikTekhnikaRecord
-                                                        .mainImage,
+                                                  child: OctoImage(
+                                                    placeholderBuilder: (_) =>
+                                                        SizedBox.expand(
+                                                      child: Image(
+                                                        image: BlurHashImage(
+                                                            '[6PZfSi_.AyE_3t7t7R**0o#DgR4_3R*D%xtMcV@%itSIot7-:IoNHoft7M{%1WBg4tR?vWB9Et7'),
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                    image: NetworkImage(
+                                                      cardSpravochnikTekhnikaRecord
+                                                          .mainImage,
+                                                    ),
                                                     width: 80.0,
                                                     height: 90.0,
                                                     fit: BoxFit.cover,
