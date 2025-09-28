@@ -1,4 +1,4 @@
-// Export pages5
+// Export pages
 export '/core/onbording/onbording_widget.dart' show OnbordingWidget;
 export '/mobile_a_p_p/add_new_order/add_new_order_widget.dart'
     show AddNewOrderWidget;
