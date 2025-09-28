@@ -1,0 +1,69 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "lib/**"
+  # pull_request:
+    # branches:
+    #  - main
+   # paths:
+     # - "lib/**"
+
+jobs:
+  build_web:
+    name: Build Flutter (Web)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2 
+        with:
+          channel: 'stable'
+          
+      
+      - name: Cache Pub dependencies 
+        uses: actions/cache@v3
+        with:
+          path: $HOME/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      
+      - name: Get Pub dependencies
+        run: flutter pub get
+
+      - name: Enable Web
+        run: flutter config --enable-web
+
+      - name: Build Flutter Web App
+        
+        run: flutter build web --release 
+
+      - name: Upload production artifact
+        uses: actions/upload-artifact@v4 
+        with:
+          name: web-build
+          path: build/web
+
+  deploy:
+    needs: build_web
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 
+      
+      - name: Download production artifact
+        uses: actions/download-artifact@v4 
+        with:
+          name: web-build
+          path: build/web
+      
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'
+          channelId: live
