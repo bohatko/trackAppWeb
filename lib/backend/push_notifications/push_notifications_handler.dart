@@ -119,20 +119,6 @@ class ParameterData {
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'onbording': ParameterData.none(),
-  'login_sms': (data) async => ParameterData(
-        allParams: {
-          'number': getParameter<String>(data, 'number'),
-          'driverName': getParameter<String>(data, 'driverName'),
-          'driverLastName': getParameter<String>(data, 'driverLastName'),
-          'companyRef': getParameter<DocumentReference>(data, 'companyRef'),
-          'assignUser': getParameter<DocumentReference>(data, 'assignUser'),
-        },
-      ),
-  'sms_confirm': (data) async => ParameterData(
-        allParams: {
-          'number': getParameter<String>(data, 'number'),
-        },
-      ),
   'Add_new_order': ParameterData.none(),
   'Notification_page': ParameterData.none(),
   'Tehnik_more': (data) async => ParameterData(

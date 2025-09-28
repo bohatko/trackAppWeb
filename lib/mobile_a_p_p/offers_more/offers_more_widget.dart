@@ -58,84 +58,101 @@ class _OffersMoreWidgetState extends State<OffersMoreWidget> {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: !isWeb
-            ? AppBar(
-                backgroundColor: FlutterFlowTheme.of(context).primary,
-                automaticallyImplyLeading: false,
-                leading: FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 30.0,
-                  borderWidth: 1.0,
-                  buttonSize: 60.0,
-                  icon: Icon(
-                    Icons.arrow_back_rounded,
-                    color: Colors.white,
-                    size: 30.0,
-                  ),
-                  onPressed: () async {
-                    context.safePop();
-                  },
-                ),
-                title: Text(
-                  'Подробности отклика',
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Roboto',
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                actions: [],
-                centerTitle: true,
-                elevation: 2.0,
-              )
-            : null,
-        body: SafeArea(
-          top: true,
-          child: Container(
-            constraints: BoxConstraints(
-              maxWidth: 600.0,
-            ),
-            decoration: BoxDecoration(),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  wrapWithModel(
-                    model: _model.orderCardModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: OrderCardWidget(
-                      adresOrder: widget!.orderDoc!.location,
-                      priceOrder: widget!.orderDoc!.orderPrice,
-                      discriptionOrder: widget!.orderDoc!.description,
-                      numberOrder: widget!.orderDoc!.orderNumber,
-                      budgetOrder:
-                          widget!.orderDoc!.orderPriceMinusNacenka.toString(),
-                      tehnikaOrder: widget!.orderDoc?.typeTehnik,
-                      statusOrder: widget!.orderDoc?.orderStatus,
-                      datettimeOrder: widget!.orderDoc!.startTime!,
-                      orderGeo: widget!.orderDoc!.orderGeo!,
-                      driverGeo: widget!.orderDoc?.draverGeo,
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          appBar: !isWeb
+              ? AppBar(
+                  backgroundColor: FlutterFlowTheme.of(context).primary,
+                  automaticallyImplyLeading: false,
+                  leading: FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 30.0,
+                    borderWidth: 1.0,
+                    buttonSize: 60.0,
+                    icon: Icon(
+                      Icons.arrow_back_rounded,
+                      color: Colors.white,
+                      size: 30.0,
                     ),
+                    onPressed: () async {
+                      context.safePop();
+                    },
                   ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 4.0),
-                    child: wrapWithModel(
-                      model: _model.offerCardModel,
+                  title: Text(
+                    'Подробности отклика',
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          font: GoogleFonts.roboto(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .fontStyle,
+                          ),
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
+                  ),
+                  actions: [],
+                  centerTitle: true,
+                  elevation: 2.0,
+                )
+              : null,
+          body: SafeArea(
+            top: true,
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: 600.0,
+              ),
+              decoration: BoxDecoration(),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    wrapWithModel(
+                      model: _model.orderCardModel,
                       updateCallback: () => safeSetState(() {}),
-                      child: OfferCardWidget(
-                        offerDoc: widget!.oFFerDoc!,
-                        orderRef: widget!.orderDoc!.reference,
-                        statusOrder: widget!.orderDoc!.orderStatus,
+                      child: OrderCardWidget(
+                        adresOrder: widget!.orderDoc!.location,
+                        priceOrder: widget!.orderDoc!.orderPrice,
+                        discriptionOrder: widget!.orderDoc!.description,
+                        numberOrder: widget!.orderDoc!.orderNumber,
+                        budgetOrder:
+                            widget!.orderDoc!.orderPriceMinusNacenka.toString(),
+                        tehnikaOrder: widget!.orderDoc?.typeTehnik,
+                        statusOrder: widget!.orderDoc?.orderStatus,
+                        datettimeOrder: widget!.orderDoc!.startTime!,
+                        orderGeo: widget!.orderDoc!.orderGeo!,
+                        driverGeo: widget!.orderDoc?.draverGeo,
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 4.0, 4.0),
+                      child: wrapWithModel(
+                        model: _model.offerCardModel,
+                        updateCallback: () => safeSetState(() {}),
+                        child: OfferCardWidget(
+                          offerDoc: widget!.oFFerDoc!,
+                          orderRef: widget!.orderDoc!.reference,
+                          statusOrder: widget!.orderDoc!.orderStatus,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

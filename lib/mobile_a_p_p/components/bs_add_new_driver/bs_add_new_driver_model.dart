@@ -1,9 +1,9 @@
-import '';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/mobile_a_p_p/components/confirm_driver/confirm_driver_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'bs_add_new_driver_widget.dart' show BsAddNewDriverWidget;
@@ -36,7 +36,7 @@ class BsAddNewDriverModel extends FlutterFlowModel<BsAddNewDriverWidget> {
   // State field(s) for number widget.
   FocusNode? numberFocusNode;
   TextEditingController? numberTextController;
-  final numberMask = MaskTextInputFormatter(mask: '(###)-###-##-##');
+  late MaskTextInputFormatter numberMask;
   String? Function(BuildContext, String?)? numberTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   CompanyRecord? company;

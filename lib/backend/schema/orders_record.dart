@@ -166,6 +166,11 @@ class OrdersRecord extends FirestoreRecord {
   String get orderHours => _orderHours ?? '';
   bool hasOrderHours() => _orderHours != null;
 
+  // "user_ispolnitel_name" field.
+  String? _userIspolnitelName;
+  String get userIspolnitelName => _userIspolnitelName ?? '';
+  bool hasUserIspolnitelName() => _userIspolnitelName != null;
+
   void _initializeFields() {
     _owner = snapshotData['owner'] as DocumentReference?;
     _description = snapshotData['description'] as String?;
@@ -201,6 +206,7 @@ class OrdersRecord extends FirestoreRecord {
       SelectedDopStruct.fromMap,
     );
     _orderHours = snapshotData['order_hours'] as String?;
+    _userIspolnitelName = snapshotData['user_ispolnitel_name'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -263,6 +269,7 @@ Map<String, dynamic> createOrdersRecordData({
   LatLng? draverGeo,
   LatLng? orderGeo,
   String? orderHours,
+  String? userIspolnitelName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -292,6 +299,7 @@ Map<String, dynamic> createOrdersRecordData({
       'draver_geo': draverGeo,
       'order_geo': orderGeo,
       'order_hours': orderHours,
+      'user_ispolnitel_name': userIspolnitelName,
     }.withoutNulls,
   );
 
@@ -333,7 +341,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e1?.orderGeo == e2?.orderGeo &&
         listEquality.equals(e1?.dopOborud, e2?.dopOborud) &&
         listEquality.equals(e1?.listArenda, e2?.listArenda) &&
-        e1?.orderHours == e2?.orderHours;
+        e1?.orderHours == e2?.orderHours &&
+        e1?.userIspolnitelName == e2?.userIspolnitelName;
   }
 
   @override
@@ -367,7 +376,8 @@ class OrdersRecordDocumentEquality implements Equality<OrdersRecord> {
         e?.orderGeo,
         e?.dopOborud,
         e?.listArenda,
-        e?.orderHours
+        e?.orderHours,
+        e?.userIspolnitelName
       ]);
 
   @override

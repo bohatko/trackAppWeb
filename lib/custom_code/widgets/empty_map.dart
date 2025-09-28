@@ -90,7 +90,7 @@ class _EmptyMapState extends State<EmptyMap> {
       children: [
         TileLayer(
           urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-          userAgentPackageName: 'com.example.app',
+          userAgentPackageName: 'com.mobiapp.trackApp',
         ),
         CircleLayer(circles: circles),
         MarkerLayer(markers: markers),

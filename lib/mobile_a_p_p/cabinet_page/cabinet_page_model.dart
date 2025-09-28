@@ -21,10 +21,10 @@ import 'package:provider/provider.dart';
 class CabinetPageModel extends FlutterFlowModel<CabinetPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadDataKr0 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataKr0 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadDataKr0 = '';
 
   // Model for Navigate_menu component.
   late NavigateMenuModel navigateMenuModel;

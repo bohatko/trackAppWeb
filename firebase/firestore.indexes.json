@@ -57,6 +57,46 @@
       ]
     },
     {
+      "collectionGroup": "spravochnik_tekhnika",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "is_show",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "class_tehnik",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sort_by",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "spravochnik_tekhnika",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "is_show",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "class_tehnik",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "type_tehnik",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sort_by",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "orders",
       "queryScope": "COLLECTION",
       "fields": [
@@ -161,6 +201,24 @@
         {
           "fieldPath": "users_ref",
           "arrayConfig": "CONTAINS"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notification",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "user_ref",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "public",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "time",
+          "order": "DESCENDING"
         }
       ]
     }

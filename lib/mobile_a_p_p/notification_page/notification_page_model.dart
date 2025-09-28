@@ -23,6 +23,8 @@ class NotificationPageModel extends FlutterFlowModel<NotificationPageWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
 
   // Model for Navigate_menu component.
   late NavigateMenuModel navigateMenuModel;

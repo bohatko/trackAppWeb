@@ -1,4 +1,3 @@
-import '';
 import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
@@ -15,6 +14,7 @@ import 'dart:async';
 import 'orders_web_i_widget.dart' show OrdersWebIWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -47,6 +47,8 @@ class OrdersWebIModel extends FlutterFlowModel<OrdersWebIWidget> {
   // Model for Header component.
   late HeaderModel headerModel;
   Completer<List<OrdersRecord>>? firestoreRequestCompleter;
+  // Stores action output result for [Firestore Query - Query a collection] action in Container widget.
+  OffersRecord? isWinoffer;
   // State field(s) for Slider widget.
   double? sliderValue;
 

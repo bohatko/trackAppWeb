@@ -1,25 +1,23 @@
-import '';
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
-import '/components/alert_message_widget.dart';
+import '/components/alert_create_company_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'login_web_widget.dart' show LoginWebWidget;
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:barcode_widget/barcode_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class LoginWebModel extends FlutterFlowModel<LoginWebWidget> {
@@ -35,30 +33,62 @@ class LoginWebModel extends FlutterFlowModel<LoginWebWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for phone widget.
-  FocusNode? phoneFocusNode;
-  TextEditingController? phoneTextController;
-  String? Function(BuildContext, String?)? phoneTextControllerValidator;
-  // Stores action output result for [Backend Call - API (smsAuth)] action in Button widget.
-  ApiCallResponse? apiResultm0web;
-  // State field(s) for PinCode widget.
-  TextEditingController? pinCodeController;
-  FocusNode? pinCodeFocusNode;
-  String? Function(BuildContext, String?)? pinCodeControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  UsersRecord? userExest;
+  // State field(s) for TabBar widget.
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
+  int get tabBarPreviousIndex =>
+      tabBarController != null ? tabBarController!.previousIndex : 0;
+
+  // State field(s) for emailAddress_Create widget.
+  FocusNode? emailAddressCreateFocusNode1;
+  TextEditingController? emailAddressCreateTextController1;
+  String? Function(BuildContext, String?)?
+      emailAddressCreateTextController1Validator;
+  // State field(s) for password_Create widget.
+  FocusNode? passwordCreateFocusNode;
+  TextEditingController? passwordCreateTextController;
+  late bool passwordCreateVisibility;
+  String? Function(BuildContext, String?)?
+      passwordCreateTextControllerValidator;
+  // State field(s) for emailAddress_Create widget.
+  FocusNode? emailAddressCreateFocusNode2;
+  TextEditingController? emailAddressCreateTextController2;
+  late MaskTextInputFormatter emailAddressCreateMask2;
+  String? Function(BuildContext, String?)?
+      emailAddressCreateTextController2Validator;
+  // State field(s) for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
+  TextEditingController? emailAddressTextController;
+  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  // State field(s) for password widget.
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordTextController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    pinCodeController = TextEditingController();
+    passwordCreateVisibility = false;
+    passwordVisibility = false;
   }
 
   @override
   void dispose() {
-    phoneFocusNode?.dispose();
-    phoneTextController?.dispose();
+    tabBarController?.dispose();
+    emailAddressCreateFocusNode1?.dispose();
+    emailAddressCreateTextController1?.dispose();
 
-    pinCodeFocusNode?.dispose();
-    pinCodeController?.dispose();
+    passwordCreateFocusNode?.dispose();
+    passwordCreateTextController?.dispose();
+
+    emailAddressCreateFocusNode2?.dispose();
+    emailAddressCreateTextController2?.dispose();
+
+    emailAddressFocusNode?.dispose();
+    emailAddressTextController?.dispose();
+
+    passwordFocusNode?.dispose();
+    passwordTextController?.dispose();
   }
 }

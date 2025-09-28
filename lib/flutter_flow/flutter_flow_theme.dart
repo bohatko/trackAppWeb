@@ -68,34 +68,49 @@ abstract class FlutterFlowTheme {
   TextStyle get bodyText2 => typography.bodySmall;
 
   String get displayLargeFamily => typography.displayLargeFamily;
+  bool get displayLargeIsCustom => typography.displayLargeIsCustom;
   TextStyle get displayLarge => typography.displayLarge;
   String get displayMediumFamily => typography.displayMediumFamily;
+  bool get displayMediumIsCustom => typography.displayMediumIsCustom;
   TextStyle get displayMedium => typography.displayMedium;
   String get displaySmallFamily => typography.displaySmallFamily;
+  bool get displaySmallIsCustom => typography.displaySmallIsCustom;
   TextStyle get displaySmall => typography.displaySmall;
   String get headlineLargeFamily => typography.headlineLargeFamily;
+  bool get headlineLargeIsCustom => typography.headlineLargeIsCustom;
   TextStyle get headlineLarge => typography.headlineLarge;
   String get headlineMediumFamily => typography.headlineMediumFamily;
+  bool get headlineMediumIsCustom => typography.headlineMediumIsCustom;
   TextStyle get headlineMedium => typography.headlineMedium;
   String get headlineSmallFamily => typography.headlineSmallFamily;
+  bool get headlineSmallIsCustom => typography.headlineSmallIsCustom;
   TextStyle get headlineSmall => typography.headlineSmall;
   String get titleLargeFamily => typography.titleLargeFamily;
+  bool get titleLargeIsCustom => typography.titleLargeIsCustom;
   TextStyle get titleLarge => typography.titleLarge;
   String get titleMediumFamily => typography.titleMediumFamily;
+  bool get titleMediumIsCustom => typography.titleMediumIsCustom;
   TextStyle get titleMedium => typography.titleMedium;
   String get titleSmallFamily => typography.titleSmallFamily;
+  bool get titleSmallIsCustom => typography.titleSmallIsCustom;
   TextStyle get titleSmall => typography.titleSmall;
   String get labelLargeFamily => typography.labelLargeFamily;
+  bool get labelLargeIsCustom => typography.labelLargeIsCustom;
   TextStyle get labelLarge => typography.labelLarge;
   String get labelMediumFamily => typography.labelMediumFamily;
+  bool get labelMediumIsCustom => typography.labelMediumIsCustom;
   TextStyle get labelMedium => typography.labelMedium;
   String get labelSmallFamily => typography.labelSmallFamily;
+  bool get labelSmallIsCustom => typography.labelSmallIsCustom;
   TextStyle get labelSmall => typography.labelSmall;
   String get bodyLargeFamily => typography.bodyLargeFamily;
+  bool get bodyLargeIsCustom => typography.bodyLargeIsCustom;
   TextStyle get bodyLarge => typography.bodyLarge;
   String get bodyMediumFamily => typography.bodyMediumFamily;
+  bool get bodyMediumIsCustom => typography.bodyMediumIsCustom;
   TextStyle get bodyMedium => typography.bodyMedium;
   String get bodySmallFamily => typography.bodySmallFamily;
+  bool get bodySmallIsCustom => typography.bodySmallIsCustom;
   TextStyle get bodySmall => typography.bodySmall;
 
   Typography get typography => ThemeTypography(this);
@@ -126,43 +141,58 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFFF5963);
   late Color info = const Color(0xFFFFFFFF);
 
-  late Color primaryBtnText = Color(0xFFEC9832);
-  late Color lineColor = Color(0xFFE0E3E7);
-  late Color noColor = Color(0x00FFFFFF);
-  late Color backgroundComponents = Color(0xFF1D2428);
-  late Color newBorderColor = Color(0xFFEBEAE2);
+  late Color primaryBtnText = const Color(0xFFEC9832);
+  late Color lineColor = const Color(0xFFE0E3E7);
+  late Color noColor = const Color(0x00FFFFFF);
+  late Color backgroundComponents = const Color(0xFF1D2428);
+  late Color newBorderColor = const Color(0xFFEBEAE2);
 }
 
 abstract class Typography {
   String get displayLargeFamily;
+  bool get displayLargeIsCustom;
   TextStyle get displayLarge;
   String get displayMediumFamily;
+  bool get displayMediumIsCustom;
   TextStyle get displayMedium;
   String get displaySmallFamily;
+  bool get displaySmallIsCustom;
   TextStyle get displaySmall;
   String get headlineLargeFamily;
+  bool get headlineLargeIsCustom;
   TextStyle get headlineLarge;
   String get headlineMediumFamily;
+  bool get headlineMediumIsCustom;
   TextStyle get headlineMedium;
   String get headlineSmallFamily;
+  bool get headlineSmallIsCustom;
   TextStyle get headlineSmall;
   String get titleLargeFamily;
+  bool get titleLargeIsCustom;
   TextStyle get titleLarge;
   String get titleMediumFamily;
+  bool get titleMediumIsCustom;
   TextStyle get titleMedium;
   String get titleSmallFamily;
+  bool get titleSmallIsCustom;
   TextStyle get titleSmall;
   String get labelLargeFamily;
+  bool get labelLargeIsCustom;
   TextStyle get labelLarge;
   String get labelMediumFamily;
+  bool get labelMediumIsCustom;
   TextStyle get labelMedium;
   String get labelSmallFamily;
+  bool get labelSmallIsCustom;
   TextStyle get labelSmall;
   String get bodyLargeFamily;
+  bool get bodyLargeIsCustom;
   TextStyle get bodyLarge;
   String get bodyMediumFamily;
+  bool get bodyMediumIsCustom;
   TextStyle get bodyMedium;
   String get bodySmallFamily;
+  bool get bodySmallIsCustom;
   TextStyle get bodySmall;
 }
 
@@ -172,106 +202,106 @@ class ThemeTypography extends Typography {
   final FlutterFlowTheme theme;
 
   String get displayLargeFamily => 'Roboto';
-  TextStyle get displayLarge => GoogleFonts.getFont(
-        'Roboto',
+  bool get displayLargeIsCustom => false;
+  TextStyle get displayLarge => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 64.0,
       );
   String get displayMediumFamily => 'Roboto';
-  TextStyle get displayMedium => GoogleFonts.getFont(
-        'Roboto',
+  bool get displayMediumIsCustom => false;
+  TextStyle get displayMedium => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 44.0,
       );
   String get displaySmallFamily => 'Roboto';
-  TextStyle get displaySmall => GoogleFonts.getFont(
-        'Roboto',
+  bool get displaySmallIsCustom => false;
+  TextStyle get displaySmall => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
   String get headlineLargeFamily => 'Roboto';
-  TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Roboto',
+  bool get headlineLargeIsCustom => false;
+  TextStyle get headlineLarge => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
   String get headlineMediumFamily => 'Roboto';
-  TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Roboto',
+  bool get headlineMediumIsCustom => false;
+  TextStyle get headlineMedium => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 24.0,
       );
   String get headlineSmallFamily => 'Roboto';
-  TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Roboto',
+  bool get headlineSmallIsCustom => false;
+  TextStyle get headlineSmall => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 24.0,
       );
   String get titleLargeFamily => 'Roboto';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Roboto',
+  bool get titleLargeIsCustom => false;
+  TextStyle get titleLarge => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 22.0,
       );
   String get titleMediumFamily => 'Roboto';
-  TextStyle get titleMedium => GoogleFonts.getFont(
-        'Roboto',
+  bool get titleMediumIsCustom => false;
+  TextStyle get titleMedium => GoogleFonts.roboto(
         color: theme.info,
         fontWeight: FontWeight.normal,
         fontSize: 18.0,
       );
   String get titleSmallFamily => 'Roboto';
-  TextStyle get titleSmall => GoogleFonts.getFont(
-        'Roboto',
+  bool get titleSmallIsCustom => false;
+  TextStyle get titleSmall => GoogleFonts.roboto(
         color: theme.info,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
   String get labelLargeFamily => 'Roboto';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Roboto',
+  bool get labelLargeIsCustom => false;
+  TextStyle get labelLarge => GoogleFonts.roboto(
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
   String get labelMediumFamily => 'Roboto';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Roboto',
+  bool get labelMediumIsCustom => false;
+  TextStyle get labelMedium => GoogleFonts.roboto(
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
   String get labelSmallFamily => 'Roboto';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Roboto',
+  bool get labelSmallIsCustom => false;
+  TextStyle get labelSmall => GoogleFonts.roboto(
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
   String get bodyLargeFamily => 'Roboto';
-  TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Roboto',
+  bool get bodyLargeIsCustom => false;
+  TextStyle get bodyLarge => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
   String get bodyMediumFamily => 'Roboto';
-  TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Roboto',
+  bool get bodyMediumIsCustom => false;
+  TextStyle get bodyMedium => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
   String get bodySmallFamily => 'Roboto';
-  TextStyle get bodySmall => GoogleFonts.getFont(
-        'Roboto',
+  bool get bodySmallIsCustom => false;
+  TextStyle get bodySmall => GoogleFonts.roboto(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
@@ -280,38 +310,47 @@ class ThemeTypography extends Typography {
 
 extension TextStyleHelper on TextStyle {
   TextStyle override({
+    TextStyle? font,
     String? fontFamily,
     Color? color,
     double? fontSize,
     FontWeight? fontWeight,
     double? letterSpacing,
     FontStyle? fontStyle,
-    bool useGoogleFonts = true,
+    bool useGoogleFonts = false,
     TextDecoration? decoration,
     double? lineHeight,
     List<Shadow>? shadows,
-  }) =>
-      useGoogleFonts
-          ? GoogleFonts.getFont(
-              fontFamily!,
-              color: color ?? this.color,
-              fontSize: fontSize ?? this.fontSize,
-              letterSpacing: letterSpacing ?? this.letterSpacing,
-              fontWeight: fontWeight ?? this.fontWeight,
-              fontStyle: fontStyle ?? this.fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-              shadows: shadows,
-            )
-          : copyWith(
-              fontFamily: fontFamily,
-              color: color,
-              fontSize: fontSize,
-              letterSpacing: letterSpacing,
-              fontWeight: fontWeight,
-              fontStyle: fontStyle,
-              decoration: decoration,
-              height: lineHeight,
-              shadows: shadows,
-            );
+    String? package,
+  }) {
+    if (useGoogleFonts && fontFamily != null) {
+      font = GoogleFonts.getFont(fontFamily,
+          fontWeight: fontWeight ?? this.fontWeight,
+          fontStyle: fontStyle ?? this.fontStyle);
+    }
+
+    return font != null
+        ? font.copyWith(
+            color: color ?? this.color,
+            fontSize: fontSize ?? this.fontSize,
+            letterSpacing: letterSpacing ?? this.letterSpacing,
+            fontWeight: fontWeight ?? this.fontWeight,
+            fontStyle: fontStyle ?? this.fontStyle,
+            decoration: decoration,
+            height: lineHeight,
+            shadows: shadows,
+          )
+        : copyWith(
+            fontFamily: fontFamily,
+            package: package,
+            color: color,
+            fontSize: fontSize,
+            letterSpacing: letterSpacing,
+            fontWeight: fontWeight,
+            fontStyle: fontStyle,
+            decoration: decoration,
+            height: lineHeight,
+            shadows: shadows,
+          );
+  }
 }

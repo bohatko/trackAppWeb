@@ -47,24 +47,51 @@ class AbonentsCall {
 
 /// End Astral Group Code
 
-class SmsAuthCall {
+class TelegramNotificationCall {
   static Future<ApiCallResponse> call({
-    String? to = '',
-    String? msg = '',
+    String? text = 'тест',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'smsAuth',
-      apiUrl: 'https://sms.ru/sms/send',
-      callType: ApiCallType.GET,
-      headers: {},
+      callName: 'Telegram Notification',
+      apiUrl:
+          'https://api.telegram.org/bot6851730628:AAH4NXKCG46WHu33NBM4a2fEPDYJkVoHo28/sendMessage',
+      callType: ApiCallType.POST,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       params: {
-        'api_id': "4E000A43-EEE4-D0E8-1D06-8CC93B009B71",
-        'to': to,
-        'msg': msg,
-        'json': "1",
-        'ttl': "1",
-        'test': "1",
-        'from': "Track App",
+        'chat_id': "-1002145452773",
+        'text': text,
+        'parse_mode': "HTML",
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SMSAeroCall {
+  static Future<ApiCallResponse> call({
+    String? number = '',
+    String? text = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'SMS Aero',
+      apiUrl: 'https://gate.smsaero.ru/v2/sms/send',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization':
+            'Basic ZGVuaXNzX3Z1a0BtYWlsLnJ1OlU1RGtsZGRxejRQbHBWcUYzd08yQjRTRnc3Z2FnS282',
+      },
+      params: {
+        'number': number,
+        'text': text,
+        'sign': "SMS Aero",
       },
       returnBody: true,
       encodeBodyUtf8: false,
@@ -76,21 +103,20 @@ class SmsAuthCall {
   }
 }
 
-class TelegramNotificationCall {
+class SendSMSMakeCall {
   static Future<ApiCallResponse> call({
     String? text = '',
+    String? number = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'Telegram Notification',
-      apiUrl:
-          'https://api.telegram.org/bot6851730628:AAFn9XEQue-BAO38TVH2y6MkG873nSlfgGU/sendMessage',
-      callType: ApiCallType.POST,
+      callName: 'SendSMSMake',
+      apiUrl: 'https://hook.eu2.make.com/47hzkt4g2eefyv9pupam8712g3ikul2m',
+      callType: ApiCallType.GET,
       headers: {},
       params: {
-        'chat_id': "-1002145452773",
+        'number': number,
         'text': text,
       },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

@@ -1,4 +1,3 @@
-import '';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
@@ -11,6 +10,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/mobile_a_p_p/components/modal_add_new_tehnik/modal_add_new_tehnik_widget.dart';
 import 'dart:async';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'add_new_technik_widget.dart' show AddNewTechnikWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -25,32 +25,11 @@ import 'package:provider/provider.dart';
 class AddNewTechnikModel extends FlutterFlowModel<AddNewTechnikWidget> {
   ///  Local state fields for this page.
 
-  List<String> classTehnik = [];
-  void addToClassTehnik(String item) => classTehnik.add(item);
-  void removeFromClassTehnik(String item) => classTehnik.remove(item);
-  void removeAtIndexFromClassTehnik(int index) => classTehnik.removeAt(index);
-  void insertAtIndexInClassTehnik(int index, String item) =>
-      classTehnik.insert(index, item);
-  void updateClassTehnikAtIndex(int index, Function(String) updateFn) =>
-      classTehnik[index] = updateFn(classTehnik[index]);
+  String? selectedClassTehnik;
 
-  List<String> typeTehnik = [];
-  void addToTypeTehnik(String item) => typeTehnik.add(item);
-  void removeFromTypeTehnik(String item) => typeTehnik.remove(item);
-  void removeAtIndexFromTypeTehnik(int index) => typeTehnik.removeAt(index);
-  void insertAtIndexInTypeTehnik(int index, String item) =>
-      typeTehnik.insert(index, item);
-  void updateTypeTehnikAtIndex(int index, Function(String) updateFn) =>
-      typeTehnik[index] = updateFn(typeTehnik[index]);
+  String? selectedTypeTehnik;
 
-  List<String> kindTehnik = [];
-  void addToKindTehnik(String item) => kindTehnik.add(item);
-  void removeFromKindTehnik(String item) => kindTehnik.remove(item);
-  void removeAtIndexFromKindTehnik(int index) => kindTehnik.removeAt(index);
-  void insertAtIndexInKindTehnik(int index, String item) =>
-      kindTehnik.insert(index, item);
-  void updateKindTehnikAtIndex(int index, Function(String) updateFn) =>
-      kindTehnik[index] = updateFn(kindTehnik[index]);
+  String? selectedKindTehnik;
 
   ///  State fields for stateful widgets in this page.
 
@@ -93,7 +72,7 @@ class AddNewTechnikModel extends FlutterFlowModel<AddNewTechnikWidget> {
   TextEditingController? datchikVialonTextController;
   String? Function(BuildContext, String?)? datchikVialonTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  SpravochnikTekhnikaRecord? r4t5y6;
+  List<SpravochnikTekhnikaRecord>? queryTehniks;
 
   @override
   void initState(BuildContext context) {

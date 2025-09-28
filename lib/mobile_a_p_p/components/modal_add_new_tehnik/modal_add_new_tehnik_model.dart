@@ -28,10 +28,10 @@ class ModalAddNewTehnikModel extends FlutterFlowModel<ModalAddNewTehnikWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
+  bool isDataUploading_uploadData7oj = false;
+  FFUploadedFile uploadedLocalFile_uploadData7oj =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
+  String uploadedFileUrl_uploadData7oj = '';
 
   @override
   void initState(BuildContext context) {}

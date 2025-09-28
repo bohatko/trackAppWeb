@@ -1,12 +1,7 @@
-import '';
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/components/alert_create_company_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'splash_page_web_widget.dart' show SplashPageWebWidget;
 import 'package:flutter/material.dart';

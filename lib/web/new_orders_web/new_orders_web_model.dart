@@ -1,4 +1,3 @@
-import '';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
@@ -44,7 +43,7 @@ class NewOrdersWebModel extends FlutterFlowModel<NewOrdersWebWidget> {
   // State field(s) for phoneNumber widget.
   FocusNode? phoneNumberFocusNode;
   TextEditingController? phoneNumberTextController;
-  final phoneNumberMask = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
+  late MaskTextInputFormatter phoneNumberMask;
   String? Function(BuildContext, String?)? phoneNumberTextControllerValidator;
   // State field(s) for discription_order widget.
   FocusNode? discriptionOrderFocusNode;

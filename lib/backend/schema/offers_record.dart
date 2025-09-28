@@ -31,11 +31,6 @@ class OffersRecord extends FirestoreRecord {
   int get priceOffer => _priceOffer ?? 0;
   bool hasPriceOffer() => _priceOffer != null;
 
-  // "user_offer" field.
-  DocumentReference? _userOffer;
-  DocumentReference? get userOffer => _userOffer;
-  bool hasUserOffer() => _userOffer != null;
-
   // "is_win" field.
   bool? _isWin;
   bool get isWin => _isWin ?? false;
@@ -86,13 +81,17 @@ class OffersRecord extends FirestoreRecord {
   List<DocumentReference> get dopRef => _dopRef ?? const [];
   bool hasDopRef() => _dopRef != null;
 
+  // "user_offer" field.
+  DocumentReference? _userOffer;
+  DocumentReference? get userOffer => _userOffer;
+  bool hasUserOffer() => _userOffer != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
     _createdTime = snapshotData['created_time'] as DateTime?;
     _textOffer = snapshotData['text_offer'] as String?;
     _priceOffer = castToType<int>(snapshotData['price_offer']);
-    _userOffer = snapshotData['user_offer'] as DocumentReference?;
     _isWin = snapshotData['is_win'] as bool?;
     _nameCompany = snapshotData['name_company'] as String?;
     _tehnikaRef = snapshotData['tehnika_ref'] as DocumentReference?;
@@ -103,6 +102,7 @@ class OffersRecord extends FirestoreRecord {
     _gosNomer = snapshotData['gos_nomer'] as String?;
     _chatRef = snapshotData['chat_ref'] as DocumentReference?;
     _dopRef = getDataList(snapshotData['dop_ref']);
+    _userOffer = snapshotData['user_offer'] as DocumentReference?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -147,7 +147,6 @@ Map<String, dynamic> createOffersRecordData({
   DateTime? createdTime,
   String? textOffer,
   int? priceOffer,
-  DocumentReference? userOffer,
   bool? isWin,
   String? nameCompany,
   DocumentReference? tehnikaRef,
@@ -157,13 +156,13 @@ Map<String, dynamic> createOffersRecordData({
   bool? aktiv,
   String? gosNomer,
   DocumentReference? chatRef,
+  DocumentReference? userOffer,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'created_time': createdTime,
       'text_offer': textOffer,
       'price_offer': priceOffer,
-      'user_offer': userOffer,
       'is_win': isWin,
       'name_company': nameCompany,
       'tehnika_ref': tehnikaRef,
@@ -173,6 +172,7 @@ Map<String, dynamic> createOffersRecordData({
       'aktiv': aktiv,
       'gos_nomer': gosNomer,
       'chat_ref': chatRef,
+      'user_offer': userOffer,
     }.withoutNulls,
   );
 
@@ -188,7 +188,6 @@ class OffersRecordDocumentEquality implements Equality<OffersRecord> {
     return e1?.createdTime == e2?.createdTime &&
         e1?.textOffer == e2?.textOffer &&
         e1?.priceOffer == e2?.priceOffer &&
-        e1?.userOffer == e2?.userOffer &&
         e1?.isWin == e2?.isWin &&
         e1?.nameCompany == e2?.nameCompany &&
         e1?.tehnikaRef == e2?.tehnikaRef &&
@@ -198,7 +197,8 @@ class OffersRecordDocumentEquality implements Equality<OffersRecord> {
         e1?.aktiv == e2?.aktiv &&
         e1?.gosNomer == e2?.gosNomer &&
         e1?.chatRef == e2?.chatRef &&
-        listEquality.equals(e1?.dopRef, e2?.dopRef);
+        listEquality.equals(e1?.dopRef, e2?.dopRef) &&
+        e1?.userOffer == e2?.userOffer;
   }
 
   @override
@@ -206,7 +206,6 @@ class OffersRecordDocumentEquality implements Equality<OffersRecord> {
         e?.createdTime,
         e?.textOffer,
         e?.priceOffer,
-        e?.userOffer,
         e?.isWin,
         e?.nameCompany,
         e?.tehnikaRef,
@@ -216,7 +215,8 @@ class OffersRecordDocumentEquality implements Equality<OffersRecord> {
         e?.aktiv,
         e?.gosNomer,
         e?.chatRef,
-        e?.dopRef
+        e?.dopRef,
+        e?.userOffer
       ]);
 
   @override

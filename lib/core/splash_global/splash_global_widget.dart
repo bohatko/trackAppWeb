@@ -1,4 +1,3 @@
-import '';
 import '/auth/base_auth_user_provider.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -39,11 +38,19 @@ class _SplashGlobalWidgetState extends State<SplashGlobalWidget> {
       if (loggedIn) {
         if (MediaQuery.sizeOf(context).width > 800.0) {
           if (valueOrDefault(currentUserDocument?.category, '') == 'Заказчик') {
-            await Future.delayed(const Duration(milliseconds: 300));
+            await Future.delayed(
+              Duration(
+                milliseconds: 300,
+              ),
+            );
 
             context.goNamed(MyOrdersWebZWidget.routeName);
           } else {
-            await Future.delayed(const Duration(milliseconds: 300));
+            await Future.delayed(
+              Duration(
+                milliseconds: 300,
+              ),
+            );
 
             context.goNamed(OrdersWebIWidget.routeName);
           }
@@ -54,7 +61,7 @@ class _SplashGlobalWidgetState extends State<SplashGlobalWidget> {
         if (MediaQuery.sizeOf(context).width > 800.0) {
           context.goNamed(LoginWebWidget.routeName);
         } else {
-          context.goNamed(LoginSmsWidget.routeName);
+          context.goNamed(LoginWebWidget.routeName);
         }
       }
     });
@@ -76,35 +83,38 @@ class _SplashGlobalWidgetState extends State<SplashGlobalWidget> {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed(SplashGlobalWidget.routeName);
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/T_App_logo_09.png',
-                    width: 270.0,
-                    fit: BoxFit.contain,
+      child: PopScope(
+        canPop: false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          body: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed(SplashGlobalWidget.routeName);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.asset(
+                      'assets/images/T_App_logo_09.png',
+                      width: 270.0,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

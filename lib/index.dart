@@ -1,7 +1,5 @@
 // Export pages
 export '/core/onbording/onbording_widget.dart' show OnbordingWidget;
-export '/auth/login_sms/login_sms_widget.dart' show LoginSmsWidget;
-export '/auth/sms_confirm/sms_confirm_widget.dart' show SmsConfirmWidget;
 export '/mobile_a_p_p/add_new_order/add_new_order_widget.dart'
     show AddNewOrderWidget;
 export '/mobile_a_p_p/notification_page/notification_page_widget.dart'

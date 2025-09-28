@@ -40,7 +40,11 @@ class _AddLocationWidgetState extends State<AddLocationWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await requestPermission(locationPermission);
-      await Future.delayed(const Duration(milliseconds: 1000));
+      await Future.delayed(
+        Duration(
+          milliseconds: 1000,
+        ),
+      );
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));

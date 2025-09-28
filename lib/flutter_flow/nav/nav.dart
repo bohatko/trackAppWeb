@@ -102,46 +102,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => OnbordingWidget(),
             ),
             FFRoute(
-              name: LoginSmsWidget.routeName,
-              path: LoginSmsWidget.routePath,
-              builder: (context, params) => LoginSmsWidget(
-                number: params.getParam(
-                  'number',
-                  ParamType.String,
-                ),
-                driverName: params.getParam(
-                  'driverName',
-                  ParamType.String,
-                ),
-                driverLastName: params.getParam(
-                  'driverLastName',
-                  ParamType.String,
-                ),
-                companyRef: params.getParam(
-                  'companyRef',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['users', 'company'],
-                ),
-                assignUser: params.getParam(
-                  'assignUser',
-                  ParamType.DocumentReference,
-                  isList: false,
-                  collectionNamePath: ['users'],
-                ),
-              ),
-            ),
-            FFRoute(
-              name: SmsConfirmWidget.routeName,
-              path: SmsConfirmWidget.routePath,
-              builder: (context, params) => SmsConfirmWidget(
-                number: params.getParam(
-                  'number',
-                  ParamType.String,
-                ),
-              ),
-            ),
-            FFRoute(
               name: AddNewOrderWidget.routeName,
               path: AddNewOrderWidget.routePath,
               builder: (context, params) => AddNewOrderWidget(),
